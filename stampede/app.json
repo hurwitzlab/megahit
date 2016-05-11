@@ -1,0 +1,132 @@
+{
+    "available": true,
+    "checkpointable": false,
+    "defaultMemoryPerNode": 32,
+    "defaultProcessorsPerNode": 16,
+    "defaultMaxRunTime": "12:00:00",
+    "defaultNodeCount": 1,
+    "defaultQueue": "serial",
+    "deploymentPath": "kyclark/applications/megahit-1.0.4",
+    "deploymentSystem": "data.iplantcollaborative.org",
+    "executionSystem": "tacc-stampede-kyclark",
+    "executionType": "HPC",
+    "helpURI": "https://www.ncbi.nlm.nih.gov/pubmed/25609793",
+    "label": "MEGAHIT",
+    "longDescription": "Megahit assembler",
+    "modules": [],
+    "name": "MEGAHIT",
+    "ontology": ["http://sswapmeet.sswap.info/agave/apps/Application"],
+    "parallelism": "SERIAL",
+    "shortDescription": "MEGAHIT assembler",
+    "tags": ["megahit","assembler","assembly"],
+    "templatePath": "stampede/megahit-template.sh",
+    "testPath": "stampede/test-megahit.sh",
+    "version": "1.0.4",
+    "inputs": [{
+        "id": "IN_DIR",
+        "value": {
+            "default": "",
+            "order": 0,
+            "required": true,
+            "validator": "",
+            "visible": true
+        },
+        "semantics": {
+            "ontology": ["http://sswapmeet.sswap.info/mime/application/X-bam"],
+            "minCardinality": 1,
+            "fileTypes": ["raw-0"]
+        },
+        "details": {
+            "description": "",
+            "label": "Directory of input files (FASTA/Q)",
+            "argument": "",
+            "showArgument": true
+        }
+    }],
+    "parameters": [{
+        "id": "MIN_COUNT",
+        "value": {
+            "type": "string",
+            "default": "2",
+            "order": 1,
+            "required": false,
+            "validator": "",
+            "visible": true
+        },
+        "details": {
+            "description": "Minimum multiplicity for filtering (k_min+1)-mers",
+            "label": "Minimum count",
+            "argument": "",
+            "showArgument": true
+        }
+    }, 
+    {
+        "id": "K_MIN",
+        "value": {
+            "type": "string",
+            "default": "21",
+            "order": 2,
+            "required": false,
+            "validator": "",
+            "visible": true
+        },
+        "details": {
+            "description": "Minimum kmer size (<= 255), must be odd number",
+            "label": "K minimum",
+            "argument": "",
+            "showArgument": true
+        }
+    }, 
+    {
+        "id": "K_MAX",
+        "value": {
+            "type": "string",
+            "default": "99",
+            "order": 3,
+            "required": false,
+            "validator": "",
+            "visible": true
+        },
+        "details": {
+            "description": "Maximum kmer size (<= 255), must be odd number",
+            "label": "K maximum",
+            "argument": "",
+            "showArgument": true
+        }
+    }, 
+    {
+        "id": "K_STEP",
+        "value": {
+            "type": "string",
+            "default": "20",
+            "order": 4,
+            "required": false,
+            "visible": true
+        },
+        "details": {
+            "description": "Increment of kmer size of each iteration (<= 28), must be even number",
+            "label": "K step",
+            "argument": "",
+            "showArgument": true
+        }
+    }, 
+    {
+        "id": "K_LIST",
+        "value": {
+            "type": "string",
+            "default": "",
+            "order": 5,
+            "required": false,
+            "validator": "",
+            "visible": true
+        },
+        "details": {
+            "description": "Comma-separated list of kmer size (all must be odd, in the range 15-255, increment <= 28); override --k-min, --k-max and --k-step",
+            "label": "K list",
+            "argument": "",
+            "showArgument": true
+        }
+    } 
+    ],
+    "outputs": []
+}
