@@ -1,4 +1,4 @@
-SINGULARITY = /usr/local/bin/singularity
+SINGULARITY = /usr/bin/singularity
 IMG_NAME = megahit-1.1.2.img
 DEF_NAME = image.def
 SIZE = 512
