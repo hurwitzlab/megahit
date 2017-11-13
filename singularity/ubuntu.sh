@@ -3,14 +3,16 @@ OSVersion: trusty
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %environment
-    PATH=/app/megahit/scripts:$PATH
+    PATH=/app/bin:$PATH
 
 %runscript
-    exec /app/megahit/bin/megahit "$@"
+    exec /app/bin/megahit "$@"
 
 %post
     apt-get update
-    apt-get install -y locales git build-essential wget # curl libcurl4-openssl-dev libssl-dev python3 python3-pip
+    apt-get install -y locales git build-essential wget 
+    apt-get install -y curl python
+    #libcurl4-openssl-dev libssl-dev python3 python3-pip
     locale-gen en_US.UTF-8
     #yum update -y
 
@@ -24,12 +26,12 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #
     # Stampede code
     #
-    cd $APP_DIR
     #git clone https://github.com/hurwitzlab/megahit.git mash
 
     wget -O megahit.tgz https://github.com/voutcn/megahit/releases/download/v1.1.2/megahit_v1.1.2_LINUX_CPUONLY_x86_64-bin.tar.gz
-    mkdir bin
+    mkdir -p bin
     tar -xvf megahit.tgz -C bin --strip-components=1
+    rm /app/megahit.tgz
 
     #
     # Mount points for TACC directories
